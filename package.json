@@ -1,0 +1,41 @@
+{
+  "name": "javaistic-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Javaistic's official blog.",
+  "author": "Arghya Ghosh <71373838+uiuxarghya@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export && npm run build:rss",
+    "start": "next start",
+    "format": "prettier {src,remark}/**/*.{css,js,mdx} --write",
+    "build:rss": "node ./.next/server/scripts/build-rss.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
+    "@mdx-js/loader": "^1.6.22",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/typography": "^0.5.1",
+    "autoprefixer": "^10.4.2",
+    "next": "^12.0.9",
+    "postcss": "^8.4.5",
+    "prismjs": "^1.26.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^3.0.18",
+    "tinytime": "^0.2.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.9",
+    "eslint": "8.8.0",
+    "eslint-config-next": "12.0.9",
+    "feed": "^4.2.2",
+    "file-loader": "^6.2.0",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.1.4",
+    "simple-functional-loader": "^1.2.1"
+  }
+}
