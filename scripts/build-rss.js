@@ -1,0 +1,71 @@
+import fs from 'fs'
+import ReactDOMServer from 'react-dom/server'
+import { MDXProvider } from '@mdx-js/react'
+import { Feed } from 'feed'
+
+import { getAllPosts } from '../src/getAllPostPreviews'
+
+const siteUrl = 'https://blog-javaistic.vercel.app'
+
+const feed = new Feed({
+  title: 'Javaistic Blog',
+  description: 'All the latest Javaistic news, straight from the team.',
+  id: siteUrl,
+  link: siteUrl,
+  language: 'en',
+  image: `${siteUrl}/favicon-32x32.png`,
+  favicon: `${siteUrl}/favicon.ico`,
+  copyright: `All rights reserved ${new Date().getFullYear()}, Javaistic`,
+  feedLinks: {
+    rss: `${siteUrl}/feed.xml`,
+    json: `${siteUrl}/feed.json`,
+    atom: `${siteUrl}/atom.xml`,
+  },
+  author: {
+    name: 'Adam Wathan',
+    link: 'https://twitter.com/@adamwathan',
+  },
+})
+
+getAllPosts().forEach(({ link, module: { meta, default: Content } }) => {
+  const mdx = (
+    <MDXProvider>
+      <Content />
+    </MDXProvider>
+  )
+  const html = ReactDOMServer.renderToStaticMarkup(mdx)
+  const postText = `<p><em>(The post <a href="${siteUrl + link}">${
+    meta.title
+  }</a> appeared first on <a href="${siteUrl}">Javaistic Blog</a>.)</em></p>`
+  feed.addItem({
+    title: meta.title,
+    id: meta.title,
+    link,
+    description: meta.description,
+    content: html + postText,
+    author: meta.authors.map(({ name, twitter }) => ({
+      name,
+      link: `https://twitter.com/${twitter}`,
+    })),
+    date: new Date(meta.date),
+    image: siteUrl + meta.image,
+    ...(meta.discussion
+      ? {
+          comments: meta.discussion,
+          extensions: [
+            {
+              name: '_comments',
+              objects: {
+                about: 'Link to discussion forum',
+                comments: meta.discussion,
+              },
+            },
+          ],
+        }
+      : {}),
+  })
+})
+
+fs.writeFileSync('./out/feed.xml', feed.rss2())
+fs.writeFileSync('./out/atom.xml', feed.atom1())
+fs.writeFileSync('./out/feed.json', feed.json1())
