@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRightIcon } from '@heroicons/react/outline'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
 
 export function JavaisticMark({ className }) {
   return (
@@ -50,13 +50,20 @@ export default function Header() {
           </a>
         </Link>
       </div>
-      <div className="text-base leading-5">
-        <a
-          href="https://javaistic.vercel.app/"
-          className="flex items-center font-medium text-gray-500 hover:text-gray-700"
-        >
-          Javaistic Site <ArrowRightIcon className="ml-2 h-4" />
-        </a>
+      <div className="flex space-x-4 text-base font-medium leading-5">
+        <Link href="https://github.com/javaistic">
+          <a
+            target="_blank"
+            className="flex items-center justify-center text-gray-500 hover:text-blue-500"
+          >
+            GitHub <ExternalLinkIcon className="ml-2 h-4" />
+          </a>
+        </Link>
+        <Link href="https://javaistic.vercel.app/">
+          <a className="flex items-center justify-center text-gray-500 hover:text-blue-500">
+            Javaistic Site <ExternalLinkIcon className="ml-2 h-4" />
+          </a>
+        </Link>
       </div>
     </header>
   )
