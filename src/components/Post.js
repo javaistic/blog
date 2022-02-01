@@ -262,9 +262,9 @@ export default function Post({ meta, children, posts }) {
                     )}
                   </div>
                 )}
-                <div className="pt-8">
+                <div className="w-2/3 pt-8">
                   <Link href="/">
-                    <a className="flex items-center text-sky-500 hover:text-blue-500">
+                    <a className="flex items-center justify-center rounded-full border bg-gray-100 px-2 py-1 text-sky-500 duration-200 ease-in-out hover:bg-gray-200 hover:text-blue-500">
                       <ArrowLeftIcon className="mr-2 h-4" /> Back to the blog
                     </a>
                   </Link>
