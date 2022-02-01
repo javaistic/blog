@@ -6,6 +6,7 @@ import { ArrowRightIcon } from '@heroicons/react/outline'
 import Head from 'next/head'
 import Link from 'next/link'
 import tinytime from 'tinytime'
+import Image from 'next/image'
 
 const posts = getAllPostPreviews()
 
@@ -18,7 +19,7 @@ export default function Home() {
         <Header />
       </SectionContainer>
       <SectionContainer>
-        <main>
+        <main className=" transition-all ">
           <div className="divide-y divide-gray-200">
             <Head>
               <meta name="twitter:card" content="summary_large_image" />
@@ -73,10 +74,10 @@ export default function Home() {
                             <Component />
                           </div>
                         </div>
-                        <div className="text-base font-medium">
+                        <div className="w-1/3 sm:w-1/6 text-base font-semibold">
                           <Link href={link}>
                             <a
-                              className="flex items-center text-sky-500 hover:text-blue-500"
+                              className="flex items-center justify-center rounded-full border bg-gray-100 px-2 py-1 text-sm text-sky-500 duration-200 ease-in-out hover:bg-gray-200 hover:text-blue-500"
                               aria-label={`Read "${meta.title}"`}
                             >
                               Read more <ArrowRightIcon className="ml-2 h-4" />
