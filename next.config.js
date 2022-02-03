@@ -13,6 +13,9 @@ module.exports = withBundleAnalyzer({
   images: {
     disableStaticImages: true,
   },
+  async redirects() {
+    return require('./redirects.json')
+  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(svg|png|jpe?g|gif|mp4)$/i,
