@@ -1,6 +1,6 @@
 function importAll(r) {
   return r.keys().map((fileName) => ({
-    link: fileName.substr(1).replace(/\/index\.mdx$/, ''),
+    link: "/p"+fileName.substr(1).replace(/\/*.mdx$/, ''),
     module: r(fileName),
   }))
 }
@@ -12,14 +12,14 @@ function dateSortDesc(a, b) {
 }
 
 export default function getAllPostPreviews() {
-  return importAll(require.context('./pages/?preview', true, /\.mdx$/))
+  return importAll(require.context('./pages/p/?preview', true, /\.mdx$/))
     .filter((p) => !p.link.includes('/snippets/'))
     .filter((p) => p.module.meta.private !== true)
     .sort((a, b) => dateSortDesc(a.module.meta.date, b.module.meta.date))
 }
 
 export function getAllPosts() {
-  return importAll(require.context('./pages/?rss', true, /\.mdx$/))
+  return importAll(require.context('./pages/p/?rss', true, /\.mdx$/))
     .filter((p) => !p.link.includes('/snippets/'))
     .filter((p) => p.module.meta.private !== true)
     .sort((a, b) => dateSortDesc(a.module.meta.date, b.module.meta.date))
