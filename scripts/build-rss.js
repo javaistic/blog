@@ -22,8 +22,8 @@ const feed = new Feed({
     atom: `${siteUrl}/atom.xml`,
   },
   author: {
-    name: 'Adam Wathan',
-    link: 'https://twitter.com/@adamwathan',
+    name: 'Arghya Ghosh',
+    link: 'https://twitter.com/@uiuxarghya',
   },
 })
 
