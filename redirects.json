@@ -1,0 +1,12 @@
+[
+    {
+        "source": "/javaistic-v1.0.0",
+        "destination": "/p/javaistic-v1.0.0",
+        "permanent": false
+    },
+    {
+        "source": "/javaistic-v1.1.0",
+        "destination": "/p/javaistic-v1.1.0",
+        "permanent": false
+    }
+]
