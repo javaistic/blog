@@ -1,6 +1,6 @@
 function importAll(r) {
   return r.keys().map((fileName) => ({
-    link: "/p" + fileName.substr(1).replace(/\/*.mdx$/, ''),
+    link: '/p' + fileName.substr(1).replace(/\/*.mdx$/, ''),
     module: r(fileName),
   }))
 }
